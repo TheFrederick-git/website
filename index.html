@@ -11,7 +11,6 @@ By TheFrederick
 
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <script src="scripts/copyText.js"></script>
 
     <title>TheFrederick</title>
 </head>
@@ -20,7 +19,13 @@ By TheFrederick
     <!--NavBar-->
     <ul>
         <li>
-            <a onclick="copyDiscord();return false;">
+            <a onclick="copyDiscord()">
+                <script>
+                function copyDiscord() {
+                    navigator.clipboard.writeText("TheFrederick#8776");
+                    prompt("Tag copied to clipboard!", "TheFrederick#8776");
+                }
+                </script>
                 <img src="icons/discord.svg" class="navItem">
             </a>
         </li>
