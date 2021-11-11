@@ -1,18 +1,21 @@
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Manjari:wght@700&display=swap');
 
+
 /* Scrolling */
 html, body {margin: 0; height: 100%; overflow: hidden}
 
+
 /* Div */
 div {
-    padding-top: 6vw;
-    width: 17vw;
-    height: 17vw;
-    padding-bottom: 6vw;
+    padding-top: 3vw;
+    width: 14vw;
+    height: 14vw;
+    padding-bottom: 1vw;
     margin-left: auto;
     margin-right: auto;
 }
+
 
 /* NavBar */
 ul {
@@ -27,6 +30,10 @@ li {
     float: right;
 }
 
+.leftList {
+    float: left;
+}
+
 li a {
     display: block;
     color: white;
@@ -37,6 +44,7 @@ li a {
 li a:hover {
     background-color: #111;
 }
+
 
 /* Background + Anim */
 body {
@@ -51,11 +59,13 @@ body {
     100%{background-position:99% 0%}
 }
 
+
 /* Nav Images */
 .navItem {
     width: 30px;
     height: 30px;
 }
+
 
 /* Logo + Anim */
 .logo{
@@ -68,10 +78,36 @@ body {
     100%{transform: scale(1)}
 }
 
+
 /* Text */
 h1 {
     font-family: 'Manjari', sans-serif;
     font-size: 8vw;
     text-align: center;
     color: #ffffff;
+}
+
+
+/* Audio Visualizer and it's components */
+#canvas {
+    position: fixed;
+    left: 0;
+    top: 4vw;
+    width: 100%;
+    height: 100%;
+}
+
+.theFile {
+    display: none;
+}
+
+audio {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    width: calc(100% - 20px);
+}
+
+.hide {
+    display: none;
 }
