@@ -65,7 +65,7 @@ window.onload = function() {
             for (var i = 0; i < bufferLength; i++) {
                 barHeight = dataArray[i]*3;
 
-                ctx.fillStyle = "rgba(255,255,255,0.5)";
+                ctx.fillStyle = "rgba(255,255,255," + (HEIGHT/barHeight)*0.2 + ")";
                 ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
 
                 x += barWidth + 1;
