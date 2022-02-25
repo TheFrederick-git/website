@@ -1,14 +1,144 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheFrederick</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <script type="text/javascript" src="assets/js/index.js"></script>
-</head>
-<body onload="runGame(25)">
-    <div class="gamefield" id="gamefield"></div>
-</body>
-</html>
+!--
+Made by TheFrederick
+--
+
+!DOCTYPE html
+html lang=en
+head
+
+    meta charset=UTF-8
+    meta http-equiv=X-UA-Compatible content=IE=edge
+    meta name=viewport content=width=device-width, initial-scale=1.0
+    link rel=shortcut icon href=logo.ico
+    link rel=stylesheet href=stylesstyle.css
+    link rel=stylesheet href=httpscdnjs.cloudflare.comajaxlibsanimate.css4.1.1animate.min.css
+
+script
+
+window.onload = function() {
+
+    var file = document.getElementById(fileInput);
+    var audio = document.getElementById(audio);
+
+    file.onchange = function() {
+        var files = this.files;
+        audio.src = URL.createObjectURL(files[0]);
+        audio.load();
+        audio.play();
+        var control_panel = document.getElementById(audio);
+        control_panel.style.display = block;
+        var context = new AudioContext();
+        var src = context.createMediaElementSource(audio);
+        var analyser = context.createAnalyser();
+
+        var canvas = document.getElementById(canvas);
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        var ctx = canvas.getContext(2d);
+
+        src.connect(analyser);
+        analyser.connect(context.destination);
+
+        analyser.fftSize = 256;
+
+        var bufferLength = analyser.frequencyBinCount;
+
+        var dataArray = new Uint8Array(bufferLength);
+
+        var WIDTH = canvas.width;
+        var HEIGHT = canvas.height;
+
+        var barWidth = (WIDTH  bufferLength)  2.5;
+        var barHeight;
+        var x = 0;
+
+        function renderFrame() {
+            requestAnimationFrame(renderFrame);
+
+            x = 0;
+
+            analyser.getByteFrequencyData(dataArray);
+            ctx.clearRect(0, 0, WIDTH, HEIGHT);
+            ctx.fillStyle = rgba(255,255,255,0);
+            ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+            for (var i = 0; i  bufferLength; i++) {
+                barHeight = dataArray[i]3;
+
+                ctx.fillStyle = rgba(255,255,255, + (HEIGHTbarHeight)0.2 + );
+                ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
+
+                x += barWidth + 1;
+            }
+        }
+
+        audio.play();
+        renderFrame();
+    };
+};
+
+script
+
+titleTheFredericktitle
+
+head
+body
+
+
+    !--NavBar--
+    ul
+
+        li
+            a href=mailtothefrederick.dev@gmail.com target=_blank
+                img src=iconsemail.svg class=navItem
+            a
+        li
+
+        li
+            a href=httpsdiscord.comusers279658163450413087 target=_blank
+                img src=iconsdiscord.svg class=navItem
+            a
+        li
+
+        li
+            a href=httpswww.instagram.comthefrederick__ target=_blank
+                img src=iconsinstagram.svg class=navItem
+            a
+        li
+
+        li
+            a href=httpsgithub.comTheFrederick-git target=_blank
+                img src=iconsgithub.svg class=navItem
+            a
+        li
+
+        li class=leftList
+            a
+                label for=fileInput
+                    img src=iconsmusic.svg class=navItem
+                label
+                input id=fileInput type=file class=theFile accept=audio
+            a
+        li
+
+    ul
+
+
+    !--Logo Image--
+    div
+        img src=logo.svg class=logo
+    div
+
+
+    !--Text--
+    h1 class=animate__animated animate__zoomInTheFrederickh1
+
+    !--Audio visualizer--
+    div id=content
+        canvas id=canvascanvas
+        audio id=audio class=hide controlsaudio
+    div
+
+
+body
+html
