@@ -1,144 +1,14 @@
-<!--
-Made by TheFrederick
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="logo.ico">
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
-<script>
-
-window.onload = function() {
-
-    var file = document.getElementById("fileInput");
-    var audio = document.getElementById("audio");
-
-    file.onchange = function() {
-        var files = this.files;
-        audio.src = URL.createObjectURL(files[0]);
-        audio.load();
-        audio.play();
-        var control_panel = document.getElementById("audio");
-        control_panel.style.display = "block";
-        var context = new AudioContext();
-        var src = context.createMediaElementSource(audio);
-        var analyser = context.createAnalyser();
-
-        var canvas = document.getElementById("canvas");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        var ctx = canvas.getContext("2d");
-
-        src.connect(analyser);
-        analyser.connect(context.destination);
-
-        analyser.fftSize = 256;
-
-        var bufferLength = analyser.frequencyBinCount;
-
-        var dataArray = new Uint8Array(bufferLength);
-
-        var WIDTH = canvas.width;
-        var HEIGHT = canvas.height;
-
-        var barWidth = (WIDTH / bufferLength) * 2.5;
-        var barHeight;
-        var x = 0;
-
-        function renderFrame() {
-            requestAnimationFrame(renderFrame);
-
-            x = 0;
-
-            analyser.getByteFrequencyData(dataArray);
-            ctx.clearRect(0, 0, WIDTH, HEIGHT);
-            ctx.fillStyle = "rgba(255,255,255,0)";
-            ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
-            for (var i = 0; i < bufferLength; i++) {
-                barHeight = dataArray[i]*3;
-
-                ctx.fillStyle = "rgba(255,255,255," + (HEIGHT/barHeight)*0.2 + ")";
-                ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
-
-                x += barWidth + 1;
-            }
-        }
-
-        audio.play();
-        renderFrame();
-    };
-};
-
-</script>
-
-<title>TheFrederick</title>
-
+    <title>TheFrederick</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script type="text/javascript" src="assets/js/index.js"></script>
 </head>
-<body>
-
-
-    <!--NavBar-->
-    <ul>
-
-        <li>
-            <a href="mailto:thefrederick.dev@gmail.com" target="_blank">
-                <img src="icons/email.svg" class="navItem">
-            </a>
-        </li>
-
-        <li>
-            <a href="https://discord.com/users/279658163450413087" target="_blank">
-                <img src="icons/discord.svg" class="navItem">
-            </a>
-        </li>
-
-        <li>
-            <a href="https://www.instagram.com/thefrederick__" target="_blank">
-                <img src="icons/instagram.svg" class="navItem">
-            </a>
-        </li>
-
-        <li>
-            <a href="https://github.com/TheFrederick-git" target="_blank">
-                <img src="icons/github.svg" class="navItem">
-            </a>
-        </li>
-
-        <li class="leftList">
-            <a>
-                <label for="fileInput">
-                    <img src="icons/music.svg" class="navItem">
-                </label>
-                <input id="fileInput" type="file" class="theFile" accept="audio/*">
-            </a>
-        </li>
-
-    </ul>
-
-
-    <!--Logo Image-->
-    <div>
-        <img src="logo.svg" class="logo">
-    </div>
-
-
-    <!--Text-->
-    <h1 class="animate__animated animate__zoomIn">TheFrederick</h1>
-    
-    <!--Audio visualizer-->
-    <div id="content">
-        <canvas id="canvas"></canvas>
-        <audio id="audio" class="hide" controls></audio>
-    </div>
-
-
+<body onload="runGame(25)">
+    <div class="gamefield" id="gamefield"></div>
 </body>
 </html>
