@@ -1,0 +1,42 @@
+:root {
+    --gamefield-side-size: 40vw;
+    --box-side-size: 0.5vw;
+    --box-gap-size: 0.1vw;
+    --box-shadow-size: 1vw;
+}
+
+body {
+    background-color:rgb(30, 30, 30);
+    padding: 0;
+    margin: 0;
+}
+
+.gamefield {
+    width: var(--gamefield-side-size);
+    height: var(--gamefield-side-size);
+    position: fixed;
+    display: grid;
+    transform: translate(-50%, -50%);
+    border: 1px solid orange;
+    gap: var(--box-gap-size);
+    top: 50%;
+    left: 50%;
+}
+
+
+div > div {
+    padding: var(--box-side-size);
+    height: var(--box-side-size);
+    width: var(--box-side-size);
+    aspect-ratio: 1;
+}
+
+#blockon {
+    background-color: orange;
+    box-shadow: 0px 0px var(--box-shadow-size) var(--box-shadow-size)  rgba(151, 69, 2, 0.226);
+    border-radius: 10%;
+}
+
+#blockoff {
+    background-color: none;
+}
