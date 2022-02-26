@@ -1,0 +1,64 @@
+:root {
+    --gamefield-side-size: 95%;
+    --box-side-size: 95%;
+    --box-shadow-size: 10px;
+}
+
+body {
+    background-color: rgb(30, 30, 30);
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (orientation: portrait) {
+    .gamefield {
+        width: var(--gamefield-side-size);
+        height: auto;
+        position: absolute;
+        display: grid;
+        transform: translate(-50%, -50%);
+        border: 1px solid orange;
+        top: 50%;
+        left: 50%;
+        aspect-ratio: 1;
+        grid-template-columns: repeat(25, 1fr);
+    }
+
+    div>div {
+        width: var(--box-side-size);
+        height: auto;
+        aspect-ratio: 1;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .gamefield {
+        width: auto;
+        height: var(--gamefield-side-size);
+        position: absolute;
+        display: grid;
+        transform: translate(-50%, -50%);
+        border: 1px solid orange;
+        top: 50%;
+        left: 50%;
+        aspect-ratio: 1;
+        grid-template-columns: repeat(25, 1fr);
+    }
+
+    div>div {
+        width: var(--box-side-size);
+        height: auto;
+        aspect-ratio: 1;
+    }
+}
+
+
+#blockon {
+    background-color: orange;
+    box-shadow: 0px 0px 10px 10px rgba(151, 69, 2, 0.226);
+    border-radius: 10%;
+}
+
+#blockoff {
+    background-color: none;
+}
