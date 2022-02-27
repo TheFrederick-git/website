@@ -1,5 +1,5 @@
 function createGamefield(scale) {
-    // Generates a 2D filed randomly filed with 0's & 1's
+    // Generates a 2D file randomly filed with 0's & 1's
     let gamefield = [];
     for (let x = 0; x < scale; x++) {
         let row = [];
@@ -13,7 +13,7 @@ function createGamefield(scale) {
 
 
 function joinGamefield(gamefield) {
-    // Joinds contents of 2D field into a single string
+    // Joins contents of 2D field into a single string
     let scale = gamefield.length;
     let output = "";
     for (let x = 0; x < scale; x++) {
@@ -90,7 +90,7 @@ function drawgamefield(gamefield, scale) {
 
 
 function runGame(scale) {
-    //Main loop
+    // Main loop
     var myfield = createGamefield(scale);
     setInterval(function() {
         document.getElementById("gamefield").innerHTML = '';
