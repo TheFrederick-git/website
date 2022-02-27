@@ -43,6 +43,7 @@ li a {
 
 li a:hover {
     background-color: #111;
+    transition-duration: 0.5s;
 }
 
 
